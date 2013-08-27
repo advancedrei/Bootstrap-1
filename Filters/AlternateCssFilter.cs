@@ -32,7 +32,7 @@ namespace Bootstrap.Filters {
                 return;
 
             var themeName = _siteThemeService.GetSiteTheme();
-            if (themeName.Name == Constants.THEME_NAME) {
+            if (themeName.Name == Constants.ThemeName) {
                 this.AddCss();
             }
         }
@@ -45,7 +45,7 @@ namespace Bootstrap.Filters {
                 _resourceManager.Require("stylesheet", settings.Swatch)
                                 .AtHead();
 
-                System.Web.HttpContext.Current.Items[Constants.ITEM_USE_SWATCH_NAME] = settings.Swatch.ToString();
+                System.Web.HttpContext.Current.Items[Constants.UseSwatchName] = settings.Swatch.ToString();
 
             // Add Bootstrap Responsive
             _resourceManager.Require("stylesheet", ResourceManifest.BOOTSTRAP_RESPONSIVE_STYLE)

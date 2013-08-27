@@ -15,7 +15,7 @@ namespace Bootstrap {
 
         public void GetNavigation(NavigationBuilder builder) {
             var themeName = _siteThemeService.GetSiteTheme();
-            if (themeName.Name == Constants.THEME_NAME) {
+            if (themeName.Name == Constants.ThemeName) {
                 builder.AddImageSet("themes")
                     .Add(T("Themes"), "10", BuildMenu);
             }
@@ -24,12 +24,12 @@ namespace Bootstrap {
         private void BuildMenu(NavigationItemBuilder menu) {
             menu.Add(T("foo"), "10.0",
                 item => item
-                    .Action("Index", "Admin", new { area = Constants.ROUTES_AREA_NAME })
+                    .Action("Index", "Admin", new { area = Constants.RoutesAreaName })
                     .Permission(Bootstrap.Permissions.ManageThemeSettings)
             );
             menu.Add(T("Choose Options"), "10.1",
                 item => item
-                    .Action("Index", "Admin", new { area = Constants.ROUTES_AREA_NAME })
+                    .Action("Index", "Admin", new { area = Constants.RoutesAreaName })
                     .Permission(Bootstrap.Permissions.ManageThemeSettings)
             );
         }
