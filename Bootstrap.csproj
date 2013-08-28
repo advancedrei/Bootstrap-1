@@ -141,6 +141,7 @@
   <ItemGroup>
     <Compile Include="AdminMenu.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="ThemeHelper.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Filters\AlternateCssFilter.cs" />
     <Compile Include="Filters\LayoutFilter.cs" />

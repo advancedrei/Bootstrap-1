@@ -1,8 +1,7 @@
 ﻿using Orchard;
 
 namespace Bootstrap {
-    public static class ThemeHelper 
-    {
+    public static class ThemeHelper {
 
         /// <summary>
         /// Retrieves settings for the theme from Orchard's WorkContext.
@@ -10,12 +9,10 @@ namespace Bootstrap {
         /// <param name="workContext">The WorkContext to retrieve the settings from.</param>
         /// <param name="itemName">The setting name to retrieve.</param>
         /// <returns>A boolean representing the current Theme Setting.</returns>
-        public static bool SettingsEval(this WorkContext workContext, string itemName)
-        {
+        public static bool SettingsEval(this WorkContext workContext, string itemName) {
             var returnValue = false;
             var context = workContext.HttpContext;
-            if (context.Items[itemName] != null && (string)context.Items[itemName] == bool.TrueString)
-            {
+            if (context.Items[itemName] != null && (string) context.Items[itemName] == bool.TrueString) {
                 returnValue = true;
             }
             return returnValue;
