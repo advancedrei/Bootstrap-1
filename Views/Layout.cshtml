@@ -74,51 +74,35 @@
     var tag = Tag(Model, "div"); // using Tag so the layout div gets the classes, id and other attributes added to the Model
     var containerClass = useFluidLayout ? "container-fluid" : "container";
     var rowClass = useFluidLayout ? "row-fluid" : "row";
+    var fixedNavClass = useFixedNav ? "navbar-fixed-top" : "navbar-static-top";
+    var inverseNavClass = useInverseNav ? "navbar-inverse" : string.Empty;
+    var stickyFooterClass = useStickyFooter ? "min-height: 100%; height: auto !important; height: 100%; margin: 0 auto -115px;" : string.Empty;
     var asideCssClass = ThemeHelper.GetAsideCssClass(asideClass);
     var tripleCssClass = ThemeHelper.GetTripleCssClass(tripleClass);
     var footerQuadCssClass = ThemeHelper.GetFooterQuadCssClass(footerQuadClass);
-
 }
-<div id="layout-wrapper" style="@(useStickyFooter ? "min-height: 100%; height: auto !important; height: 100%; margin: 0 auto -115px;" : string.Empty /*change last value in margin to adjust footer height-don't forget sticky footer settings in theme.css*/)">
-    @if (useFixedNav) { 
-        <div class="navbar navbar-fixed-top @(useInverseNav ? "navbar-inverse" : string.Empty)">
-            <div class="navbar-inner">
-                <div class="@containerClass">
-                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </a>
-                    @if (Model.Header != null) {
-                        @Zone(Model.Header)
-                    }
-                    <div class="nav-collapse collapse" id="main-menu">
-                        @if (Model.Navigation != null) {
-                            @Zone(Model.Navigation)
-                        }
-                    </div>
-                </div>
-            </div>
-        </div>
-    }
-    else {
-        <div class="@containerClass">
-            <header class="jumbotron subhead" id="overview">
-                <div class="@rowClass">
-                    <div class="span12">
-                        @if (Model.Header != null) {
-                            @Zone(Model.Header)
-                        }
-                    </div>
-                </div>
-                <div class="subnav" id="main-menu">
+<div id="layout-wrapper" style="@stickyFooterClass">
+
+    <div class="navbar @fixedNavClass @inverseNavClass">
+        <div class="navbar-inner">
+            <div class="@containerClass">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                @if (Model.Header != null) {
+                    @Zone(Model.Header)
+                }
+                <div class="nav-collapse collapse" id="main-menu">
                     @if (Model.Navigation != null) {
                         @Zone(Model.Navigation)
                     }
                 </div>
-            </header>
+            </div>
         </div>
-    }
+    </div>
+
     <section id="content">
         <div class="@containerClass">
             @if (Model.BeforeMain != null) {
